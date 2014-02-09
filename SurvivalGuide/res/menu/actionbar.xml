@@ -1,0 +1,40 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<item
+		android:id="@+id/actionBarHome"
+		android:icon="@drawable/nusglogo"
+		android:title="NUSG"
+		android:orderInCategory="1"
+		android:showAsAction="always"
+		/>
+		
+	<item
+		android:id="@+id/settings"
+		android:icon="@drawable/plus"
+		android:title="put"
+		android:orderInCategory="2"
+		android:showAsAction="ifRoom"
+		/>	
+		
+	<item
+		android:id="@+id/settings2"
+		android:title="settings"
+		android:orderInCategory="3"
+		android:showAsAction="never"
+		/>	
+	
+	<item
+		android:id="@+id/settings3"
+		android:title="here"
+		android:orderInCategory="4"
+		android:showAsAction="never"
+		/>	
+	
+	<item
+		android:id="@+id/settings4"
+		android:title="smiley face"
+		android:showAsAction="never"
+		android:orderInCategory="5"
+		/>	
+		
+</menu>

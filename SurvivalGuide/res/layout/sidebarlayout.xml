@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:id="@+id/sidebarContent">
+    
+    
+   <FrameLayout
+    android:id="@+id/sidebar_content"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#303030"/>
+       
+       <ImageView 
+       android:id="@+id/sidebar_cover"
+       android:layout_width="35dip"
+       android:layout_height="wrap_content"
+       android:layout_marginRight="7dip"
+       android:layout_centerVertical="true" 
+       android:layout_alignParentLeft="true"
+       android:text=">" />
+
+    
+
+</RelativeLayout>
