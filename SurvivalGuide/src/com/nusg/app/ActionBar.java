@@ -1,5 +1,7 @@
 package com.nusg.app;
 
+//Testing, just a git comment
+
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
