@@ -3,13 +3,20 @@ package com.nusg.app;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Window;
 
 public class Launcher extends Activity{
 
-	protected void onCreate(Bundle CallumIHateYou) {
-		super.onCreate(CallumIHateYou);
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		
+		getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+	    getActionBar().hide();
 		
 		setContentView(com.nusg.app.R.layout.loadingscreen);
+		
+		
+		
 		Thread timer = new Thread(){
 			
 			public void run(){
@@ -21,7 +28,7 @@ public class Launcher extends Activity{
 					e.printStackTrace();
 				}
 				finally{
-					Intent openMain = new Intent ("com.nusg.app.MAINACTIVITY");
+					Intent openMain = new Intent ("com.nusg.app.MainMenu");
 					startActivity(openMain);
 				}
 			}

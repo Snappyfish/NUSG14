@@ -35,7 +35,7 @@ public class ActionBar extends Activity{
 		switch(item.getItemId()){
 		
 		case com.nusg.app.R.id.actionBarHome:
-		Intent returnHome = new Intent(this, MainActivity.class);
+		Intent returnHome = new Intent(this, MainMenu.class);
 		startActivity(returnHome);
 		break;
 		

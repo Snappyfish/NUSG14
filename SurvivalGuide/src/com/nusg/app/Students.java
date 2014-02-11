@@ -1,6 +1,6 @@
 package com.nusg.app;
 
-import android.annotation.SuppressLint;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-@SuppressLint("NewApi")
+
 public class Students extends Activity {
 
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class Students extends Activity {
 		switch(item.getItemId()){
 		
 		case com.nusg.app.R.id.actionBarHome:
-		Intent returnHome = new Intent(this, MainActivity.class);
+		Intent returnHome = new Intent(this, MainMenu.class);
 		startActivity(returnHome);
 		break;
 		

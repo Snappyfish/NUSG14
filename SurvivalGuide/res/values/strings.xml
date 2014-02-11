@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">SurvivalGuide</string>
+    <string name="app_name">Survival Guide</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="logo">NUSG Logo</string>
+    <string name="splash_screen">Splash screen</string>
+    
+    <string name="activity_mainmenu_name">Newcastle University Survival Guide</string>
+    <string name="activity_planner_name">Planner</string>
+    <string name="activity_preacceptance_name">Pre-Acceptance</string>
+    <string name="activity_essentials_name">Essentials</string>
+    <string name="activity_social_name">Social</string>
+    <string name="activity_student_name">Student</string>
+    <string name="activity_contacts_name">Contacts</string>
 
 </resources>

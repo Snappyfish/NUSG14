@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="11"
         android:targetSdkVersion="19" />
 
     <application
@@ -14,12 +14,24 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
 
-        <!-- home page of application, contains 6 buttons and is the default page, currently set to top parent class -->
+        <!-- Splash activity that pops up during app startup, displays an image for 3 seconds, and then proceeds to home page. -->
         <activity
-            android:name="com.nusg.app.MainActivity"
+            android:name="com.nusg.app.Launcher"
             android:label="@string/app_name" >
             <intent-filter>
-                <action android:name="com.nusg.app.MAINACTIVITY" />
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        
+        <!-- home page of application, contains 6 buttons -->
+        <activity
+            android:name="com.nusg.app.MainMenu"
+            android:label="@string/activity_mainmenu_name" >
+            <intent-filter>
+                <action android:name="com.nusg.app.MainMenu" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -28,11 +40,11 @@
         <!-- Sub pages of app, these include contact us, pre Acceptance, essentials, social, students and planner -->
         <activity
             android:name="com.nusg.app.Planner"
-            android:label="@string/app_name" 
-            android:parentActivityName="com.example.myfirstapp.MainActivity" >
+            android:label="@string/activity_planner_name" 
+            android:parentActivityName="com.nusg.app.MainMenu" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.myfirstapp.MainActivity" />
+                android:value="com.nusg.app.MainMenu" />
             <intent-filter>
                 <action android:name="com.nusg.app.PLANNER" />
 
@@ -44,11 +56,11 @@
 
         <activity
             android:name="com.nusg.app.PreAcceptance"
-            android:label="@string/app_name" 
-            android:parentActivityName="com.nusg.app.MainActivity" >
+            android:label="@string/activity_preacceptance_name" 
+            android:parentActivityName="com.nusg.app.MainMenu" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.nusg.app.MainActivity" />
+                android:value="com.nusg.app.MainMenu" />
             <intent-filter>
                 <action android:name="com.nusg.app.PREACCEPTANCE" />
 
@@ -60,11 +72,11 @@
 
         <activity
             android:name="com.nusg.app.Essentials"
-            android:label="@string/app_name" 
-            android:parentActivityName="com.example.myfirstapp.MainActivity" >
+            android:label="@string/activity_essentials_name" 
+            android:parentActivityName="com.nusg.app.MainMenu" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.myfirstapp.MainActivity" />
+                android:value="com.nusg.app.MainMenu" />
             <intent-filter>
                 <action android:name="com.nusg.app.ESSENTIALS" />
 
@@ -76,11 +88,11 @@
 
         <activity
             android:name="com.nusg.app.Social"
-            android:label="@string/app_name" 
-            android:parentActivityName="com.example.myfirstapp.MainActivity" >
+            android:label="@string/activity_social_name" 
+            android:parentActivityName="com.nusg.app.MainMenu" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.myfirstapp.MainActivity" />
+                android:value="com.nusg.app.MainMenu" />
             <intent-filter>
                 <action android:name="com.nusg.app.SOCIAL" />
 
@@ -92,11 +104,11 @@
 
         <activity
             android:name="com.nusg.app.Student"
-            android:label="@string/app_name" 
-            android:parentActivityName="com.example.myfirstapp.MainActivity" >
+            android:label="@string/activity_student_name" 
+            android:parentActivityName="com.nusg.app.MainMenu" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.myfirstapp.MainActivity" />
+                android:value="com.nusg.app.MainMenu" />
             <intent-filter>
                 <action android:name="com.nusg.app.STUDENT" />
 
@@ -108,11 +120,11 @@
 
         <activity
             android:name="com.nusg.app.Contacts"
-            android:label="@string/app_name" 
-            android:parentActivityName="com.example.myfirstapp.MainActivity" >
+            android:label="@string/activity_contacts_name" 
+            android:parentActivityName="com.nusg.app.MainMenu" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.myfirstapp.MainActivity" />
+                android:value="com.nusg.app.MainMenu" />
             <intent-filter>
                 <action android:name="com.nusg.app.CONTACTS" />
 
@@ -123,16 +135,7 @@
         <!-- ////////////////////////////////////////////////////////////////////////////////////// -->
 
 
-        <!-- Splash activity that pops up during app startup, displays an image for 3 seconds, and then proceeds to home page. -->
-        <activity
-            android:name="com.nusg.app.Launcher"
-            android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.LAUNCHER" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        
     </application>
 
 </manifest>
