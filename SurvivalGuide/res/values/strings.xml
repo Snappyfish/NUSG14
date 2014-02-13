@@ -7,7 +7,7 @@
     <string name="logo">NUSG Logo</string>
     <string name="splash_screen">Splash screen</string>
     
-    <string name="activity_mainmenu_name">Newcastle University Survival Guide</string>
+    <string name="activity_mainmenu_name">Newcastle Uni Survival Guide</string>
     <string name="activity_planner_name">Planner</string>
     <string name="activity_preacceptance_name">Pre-Acceptance</string>
     <string name="activity_essentials_name">Essentials</string>

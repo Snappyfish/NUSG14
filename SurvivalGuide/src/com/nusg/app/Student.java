@@ -9,11 +9,11 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 
-public class Students extends Activity {
+public class Student extends Activity {
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.students);
+		setContentView(R.layout.student);
 		
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 	}

@@ -21,7 +21,7 @@ public class Launcher extends Activity{
 			
 			public void run(){
 				try{
-					sleep(3000);
+					sleep(1500);
 				}
 				catch(InterruptedException e){
 					System.out.println("Timer is not running properly.");
