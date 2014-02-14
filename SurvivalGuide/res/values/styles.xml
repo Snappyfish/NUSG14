@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
@@ -15,6 +15,22 @@
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    
+    <style name="Essentials">
+        <item name="android:background">#c9a0dc</item>
+    </style>
+    <style name="Social">
+         <item name="android:background">#99CCFF</item>
+    </style>
+    <style name="Student">
+         <item name="android:background">#FF9999</item>
+    </style>
+    <style name="Preacceptance">
+         <item name="android:background">#FFCC99</item>
+    </style>
+    <style name="Planner">
+         <item name="android:background">#99FF99</item>
     </style>
 
 </resources>

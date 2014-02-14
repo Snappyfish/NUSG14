@@ -7,6 +7,6 @@ public class Contacts extends Activity {
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.contacts);
+		setContentView(R.layout.planner_main);
 	}
 }

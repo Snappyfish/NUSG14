@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Preacceptance"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFCC99" >
+    
+
+          <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:text="Title Header"
+            android:textSize="30dp"
+            ></TextView>
+        
+   
+        <CheckBox android:id="@+id/checkbox1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="asdf"
+        android:onClick="onCheckboxClicked"/>
+    
+        <CheckBox android:id="@+id/checkbox1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="asdf"
+        android:onClick="onCheckboxClicked"/>
+    
+		<CheckBox android:id="@+id/checkbox1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="asdf"
+        android:onClick="onCheckboxClicked"/>
+    
+		<CheckBox android:id="@+id/checkbox1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="asdf"
+        android:onClick="onCheckboxClicked"/>
+    
+		<CheckBox android:id="@+id/checkbox1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="asdf"
+        android:onClick="onCheckboxClicked"/>
+    
+
+	
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Add a checkbox" />
+    
+    <Button
+     		android:id="@+id/addNewChecklistItem"
+    		android:layout_width="12dp"
+            android:layout_height="12dp" 
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/plus" />
+    
+    
+</LinearLayout>

@@ -14,9 +14,16 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
 
+        <!-- google maps integration meta-data - do not alter -->
+        <!--   
+        <meta-data    android:name="com.google.android.gms.version"    
+            android:value="@integer/google_play_services_version" />
+        -->
+        
+        
         <!-- Splash activity that pops up during app startup, displays an image for 3 seconds, and then proceeds to home page. -->
         <activity
-            android:name="com.nusg.app.Launcher"
+            android:name="com.nusg.app.Startup.Launcher"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,7 +35,7 @@
         
         <!-- home page of application, contains 6 buttons -->
         <activity
-            android:name="com.nusg.app.MainMenu"
+            android:name="com.nusg.app.Startup.MainMenu"
             android:label="@string/activity_mainmenu_name" >
             <intent-filter>
                 <action android:name="com.nusg.app.MainMenu" />
@@ -39,9 +46,9 @@
 
         <!-- Sub pages of app, these include contact us, pre Acceptance, essentials, social, students and planner -->
         <activity
-            android:name="com.nusg.app.Planner"
+            android:name="com.nusg.app.Planner.Planner"
             android:label="@string/activity_planner_name" 
-            android:parentActivityName="com.nusg.app.MainMenu" >
+            android:parentActivityName="com.nusg.app.Startup.MainMenu" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.nusg.app.MainMenu" />
@@ -55,9 +62,9 @@
         <!-- /////////////////////////////////////////////////////////////////////////////////////// -->
 
         <activity
-            android:name="com.nusg.app.PreAcceptance"
+            android:name="com.nusg.app.PreAcceptance.PreAcceptance"
             android:label="@string/activity_preacceptance_name" 
-            android:parentActivityName="com.nusg.app.MainMenu" >
+            android:parentActivityName="com.nusg.app.Startup.MainMenu" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.nusg.app.MainMenu" />
@@ -71,9 +78,9 @@
         <!-- /////////////////////////////////////////////////////////////////////////////////////// -->
 
         <activity
-            android:name="com.nusg.app.Essentials"
+            android:name="com.nusg.app.Essentials.Essentials"
             android:label="@string/activity_essentials_name" 
-            android:parentActivityName="com.nusg.app.MainMenu" >
+            android:parentActivityName="com.nusg.app.Startup.MainMenu" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.nusg.app.MainMenu" />
@@ -87,9 +94,9 @@
         <!-- /////////////////////////////////////////////////////////////////////////////////////// -->
 
         <activity
-            android:name="com.nusg.app.Social"
+            android:name="com.nusg.app.Social.Social"
             android:label="@string/activity_social_name" 
-            android:parentActivityName="com.nusg.app.MainMenu" >
+            android:parentActivityName="com.nusg.app.Startup.MainMenu" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.nusg.app.MainMenu" />
@@ -103,9 +110,9 @@
         <!-- /////////////////////////////////////////////////////////////////////////////////////// -->
 
         <activity
-            android:name="com.nusg.app.Student"
+            android:name="com.nusg.app.Student.Student"
             android:label="@string/activity_student_name" 
-            android:parentActivityName="com.nusg.app.MainMenu" >
+            android:parentActivityName="com.nusg.app.Startup.MainMenu" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.nusg.app.MainMenu" />
@@ -121,7 +128,7 @@
         <activity
             android:name="com.nusg.app.Contacts"
             android:label="@string/activity_contacts_name" 
-            android:parentActivityName="com.nusg.app.MainMenu" >
+            android:parentActivityName="com.nusg.app.Startup.MainMenu" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.nusg.app.MainMenu" />
