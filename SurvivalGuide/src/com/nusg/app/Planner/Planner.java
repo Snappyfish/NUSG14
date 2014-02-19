@@ -38,7 +38,7 @@ public class Planner extends Activity {
 
     }
 	
-	public void deleteEvent(View view) {
+	public void editEvents(View view) {
 //    	Intent intent = new Intent(this, DisplayMessageActivity.class);
 //    	startActivity(intent);
 
