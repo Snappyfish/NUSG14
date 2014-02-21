@@ -5,12 +5,17 @@ import com.nusg.app.R.layout;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.webkit.WebView;
 
 public class Social extends Activity {
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.preacceptance_main);
+//		setContentView(R.layout.social_nights_out);
+		WebView webview = new WebView(this);
+		setContentView(webview);
+		webview.loadUrl("http://homepages.cs.ncl.ac.uk/2013-14/csc2022_team14/");
+
 	}
 }
 

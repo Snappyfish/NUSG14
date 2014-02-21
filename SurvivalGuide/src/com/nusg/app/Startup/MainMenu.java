@@ -12,7 +12,44 @@ import android.widget.Button;
 
 public class MainMenu extends Activity {
 
-	Button contacts, preAcceptance, essentials, students, social, planner;
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main);
+		
+	}
+	
+	public void openContacts(View view) {
+		Intent openContacts = new Intent("com.nusg.app.CONTACTS");
+		startActivity(openContacts);
+	}
+	
+	public void openPreAcceptance(View view) {
+		Intent openPreAcceptance = new Intent("com.nusg.app.PREACCEPTANCE");
+		startActivity(openPreAcceptance);
+	}
+	
+	public void openEssentials(View view) {
+		Intent openEssentials = new Intent("com.nusg.app.ESSENTIALS");
+		startActivity(openEssentials);
+	}
+	
+	public void openStudents(View view) {
+		Intent openStudents = new Intent("com.nusg.app.STUDENT");
+		startActivity(openStudents);
+	}
+	
+	public void openSocial(View view) {
+		Intent openSocial = new Intent("com.nusg.app.SOCIAL");
+		startActivity(openSocial);
+	}
+	
+	public void openPlanner(View view) {
+		Intent openPlanner = new Intent("com.nusg.app.PLANNER");
+		startActivity(openPlanner);
+	}
+		
+		
+	/*Button contacts, preAcceptance, essentials, students, social, planner;
 	Button[] ButtonArr = { contacts, preAcceptance, essentials, students,
 			social, planner };
 	int[] idArr = { com.nusg.app.R.id.contacts,
@@ -84,9 +121,9 @@ public class MainMenu extends Activity {
 				startActivity(openPlanner);
 
 			}
-		});
+		});*/
 
-	}
+	
 
 	/*
 	 * @Override public boolean onCreateOptionsMenu(Menu menu) { // Inflate the

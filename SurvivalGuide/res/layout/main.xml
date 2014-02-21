@@ -32,7 +32,8 @@
         android:layout_height="match_parent"
         android:layout_margin="10dip"
         android:layout_weight="1"
-        android:background="@drawable/home" />
+        android:background="@drawable/home"
+        android:onClick="openContacts" />
 
     <Button
         android:id="@+id/preAcceptance"
@@ -40,7 +41,8 @@
         android:layout_height="match_parent"
         android:layout_margin="10dip"
         android:layout_weight="1"
-        android:background="@drawable/preacceptance" />
+        android:background="@drawable/preacceptance"
+        android:onClick="openPreAcceptance" />
 
 </TableRow>
 
@@ -53,7 +55,8 @@
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:layout_weight="1"
-            android:background="@drawable/essential" />
+            android:background="@drawable/essential"
+			android:onClick="openEssentials" />
 
 	<Button
             android:id="@+id/students"
@@ -61,7 +64,8 @@
             android:layout_height="match_parent"
            android:layout_margin="10dip"
             android:layout_weight="1"
-            android:background="@drawable/student"/>
+            android:background="@drawable/student"
+            android:onClick="openStudents" />
 </TableRow>
 
 <TableRow
@@ -74,7 +78,8 @@
         android:layout_margin="10dip"
         android:layout_weight="1"
         android:freezesText="false"
-        android:background = "@drawable/social" />
+        android:background = "@drawable/social"
+        android:onClick="openSocial" />
 
     <Button
         android:id="@+id/myPlanner"
@@ -82,7 +87,8 @@
         android:layout_height="match_parent"
         android:layout_margin="10dip"
         android:layout_weight="1"
-        android:background="@drawable/planner2" />
+        android:background="@drawable/planner2"
+        android:onClick="openPlanner" />
 </TableRow>
 
 </TableLayout>
