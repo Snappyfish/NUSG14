@@ -14,5 +14,14 @@
     <string name="activity_social_name">Social</string>
     <string name="activity_student_name">Student</string>
     <string name="activity_contacts_name">Contacts</string>
+    
+    <string name="social_deals">Deals &amp; Specials</string>
+    <string name="social_nights">Nights Out</string>
+    <string name="social_predrink">Pre-Drink Picks</string>
+    <string name="social_dealsU"><u>Deals &amp; Specials</u></string>
+    <string name="social_nightsU"><u>Nights Out</u></string>
+    <string name="social_predrinkU"><u>Pre-Drink Picks</u></string>
+    
+    
 
 </resources>

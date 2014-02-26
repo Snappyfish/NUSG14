@@ -4,19 +4,91 @@ import com.nusg.app.R;
 import com.nusg.app.R.layout;
 
 import android.app.Activity;
+import android.graphics.Paint;
 import android.os.Bundle;
+import android.view.View;
 import android.webkit.WebView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
 
 public class Social extends Activity {
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-//		setContentView(R.layout.social_nights_out);
-		WebView webview = new WebView(this);
-		setContentView(webview);
-		webview.loadUrl("http://homepages.cs.ncl.ac.uk/2013-14/csc2022_team14/");
-
+		setContentView(R.layout.social_main);
+		WebView webView = (WebView) findViewById(R.id.webView);
+		webView.loadUrl("http://homepages.cs.ncl.ac.uk/2013-14/csc2022_team14/nightsOut.html");
+		
+		
 	}
+	
+	public void clickedButton1(View view) {
+		//Setup the webView
+		WebView webView = (WebView) findViewById(R.id.webView);
+		webView.loadUrl("http://homepages.cs.ncl.ac.uk/2013-14/csc2022_team14/nightsOut.html");
+		
+		//Set the background image on each button
+		LinearLayout buttoncont = (LinearLayout) findViewById(R.id.button1container);
+		buttoncont.setBackgroundResource(R.drawable.button_selected);
+		buttoncont = (LinearLayout) findViewById(R.id.button2container);
+		buttoncont.setBackgroundResource(R.drawable.button_unselected);
+		buttoncont = (LinearLayout) findViewById(R.id.button3container);
+		buttoncont.setBackgroundResource(R.drawable.button_unselected);
+		
+		//Set the underline on selected button
+		TextView textView = (TextView) findViewById(R.id.button1);
+		textView.setText(R.string.social_nightsU);
+		textView = (TextView) findViewById(R.id.button2);
+		textView.setText(R.string.social_deals);
+		textView = (TextView) findViewById(R.id.button3);
+		textView.setText(R.string.social_predrink);
+	}
+	
+	public void clickedButton2(View view) {
+		//Setup the webView
+		WebView webView = (WebView) findViewById(R.id.webView);
+		webView.loadUrl("http://homepages.cs.ncl.ac.uk/2013-14/csc2022_team14/");
+		
+		//Set the background image on each button
+		LinearLayout buttoncont = (LinearLayout) findViewById(R.id.button1container);
+		buttoncont.setBackgroundResource(R.drawable.button_unselected);
+		LinearLayout button2cont = (LinearLayout) findViewById(R.id.button2container);
+		button2cont.setBackgroundResource(R.drawable.button_selected);
+		LinearLayout button3cont = (LinearLayout) findViewById(R.id.button3container);
+		button3cont.setBackgroundResource(R.drawable.button_unselected);
+		
+		//Set the underline on selected button
+		TextView textView = (TextView) findViewById(R.id.button1);
+		textView.setText(R.string.social_nights);
+		textView = (TextView) findViewById(R.id.button2);
+		textView.setText(R.string.social_dealsU);
+		textView = (TextView) findViewById(R.id.button3);
+		textView.setText(R.string.social_predrink);
+	}
+	
+	public void clickedButton3(View view) {
+		//Setup the webView
+		WebView webView = (WebView) findViewById(R.id.webView);
+		webView.loadUrl("http://homepages.cs.ncl.ac.uk/2013-14/csc2022_team14/clearing.html");
+		
+		//Set the background image on each button
+		LinearLayout buttoncont = (LinearLayout) findViewById(R.id.button1container);
+		buttoncont.setBackgroundResource(R.drawable.button_unselected);
+		buttoncont = (LinearLayout) findViewById(R.id.button2container);
+		buttoncont.setBackgroundResource(R.drawable.button_unselected);
+		buttoncont = (LinearLayout) findViewById(R.id.button3container);
+		buttoncont.setBackgroundResource(R.drawable.button_selected);
+		
+		//Set the underline on selected button
+		TextView textView = (TextView) findViewById(R.id.button1);
+		textView.setText(R.string.social_nights);
+		textView = (TextView) findViewById(R.id.button2);
+		textView.setText(R.string.social_deals);
+		textView = (TextView) findViewById(R.id.button3);
+		textView.setText(R.string.social_predrinkU);
+	}
+	
 }
 
 
