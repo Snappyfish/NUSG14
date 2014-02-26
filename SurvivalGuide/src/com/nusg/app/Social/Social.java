@@ -4,7 +4,6 @@ import com.nusg.app.R;
 import com.nusg.app.R.layout;
 
 import android.app.Activity;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
