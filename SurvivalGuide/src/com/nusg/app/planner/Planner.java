@@ -1,16 +1,24 @@
 package com.nusg.app.planner;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import com.nusg.app.R;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.ContentResolver;
+import android.content.ContentUris;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.provider.CalendarContract.Events;
+import android.text.format.DateUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -20,10 +28,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-@SuppressLint("NewApi")
+
 public class Planner extends Activity {
 
-//	public final static String EXTRA_MESSAGE = "com.nusg.app.Planner.MESSAGE";
 	private List<Event> calendarItems = new ArrayList<Event>();
 	
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +44,31 @@ public class Planner extends Activity {
 	
 
 	private void populateEventList() {
-		calendarItems.add(new Event("Event 1", 5, 6, "This is event one."));
-		calendarItems.add(new Event("Event 2", 1, 8, "This is event two."));
-		calendarItems.add(new Event("Event 3", 6, 7, "AIFBGASKUJYGFBJKASHYGDKJASGVD"));
-		calendarItems.add(new Event("Event 4", 2, 3, "This is event SDFSDF."));
-		calendarItems.add(new Event("Event 5", 1, 8, "This is event tdagfrdfgrdgdwo."));
-		calendarItems.add(new Event("Event 6", 6, 7, "AIFBGASKUJYGFBJKASHYGDKJASGVDdsgadfgsdgsdrfgdrgsredfggdrf"));
-	}
+		
+		ContentResolver contentResolver = this.getContentResolver();
+		long now = new Date().getTime();
+		
+        Cursor cursor = contentResolver.query(
+        		Uri.parse("content://com.android.calendar/events"), 		//Uri to the calendar events table
+        		(new String[] { "title", "description", "dtstart", "dtend"}), 	//The fields to copy over
+        		"( dtend > " + now + ")",			//SQL "Where" clause to select which rows to copy
+        		null,		//sth
+        		"dtstart ASC");			//order by
+        try {
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                	Event newEvent = new Event(cursor.getString(0), cursor.getString(1), cursor.getLong(2), cursor.getLong(3));
+                	
+					calendarItems.add(newEvent);
+                }
+            }
+        } catch (AssertionError ex) {
+            ex.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+	
 	
 	private void populateListView() {
 		
@@ -52,7 +77,6 @@ public class Planner extends Activity {
 		list.setAdapter(adapter);
 		
 	}
-	
 	
 	
 	private class ListAdapter extends ArrayAdapter<Event> {
@@ -78,12 +102,43 @@ public class Planner extends Activity {
 			
 			//Set time
 			TextView eventTime = (TextView) itemView.findViewById(R.id.itemEventTime);
-			String timeString = currentEvent.getStartTime() + " to " + currentEvent.getEndTime();
-			eventTime.setText(timeString);
+			Date startTime = new Date(currentEvent.getStartTime());
+			Date endTime = new Date(currentEvent.getEndTime());
+			String allDayFormat = "cccc d LLLL";
+			String sameDayFormatPre = "h':'mma 'to' ";
+			String sameDayFormatPost = "h':'mma',' cccc d LLLL";
+			String multiDayFormatPostPre = "h':'mma cccc d 'to' ";
+			String multiDayFormatPostPost = "h':'mma cccc d',' LLLL";
+			String multiMonthFormatPostPre = "h':'mma cccc d LLLL 'to' ";
+			String multiMonthFormatPostPost = "h':'mma cccc d LLLL";
+			
+			Calendar startTimeCal = Calendar.getInstance();
+			startTimeCal.setTime(startTime);
+			Calendar endTimeCal = Calendar.getInstance();
+			endTimeCal.setTime(endTime);
+			
+			
+			if(endTimeCal.getTimeInMillis() - startTimeCal.getTimeInMillis() == DateUtils.DAY_IN_MILLIS && startTime.getTime()%DateUtils.DAY_IN_MILLIS == 0) {	//all-day event
+				SimpleDateFormat sdf = new SimpleDateFormat(allDayFormat, Locale.getDefault());
+				eventTime.setText(sdf.format(startTime));
+			} else if(startTimeCal.get(Calendar.DAY_OF_YEAR) == endTimeCal.get(Calendar.DAY_OF_YEAR)) {		//Event starts and ends in the same day
+				SimpleDateFormat sdf1 = new SimpleDateFormat(sameDayFormatPre, Locale.getDefault());
+				SimpleDateFormat sdf2 = new SimpleDateFormat(sameDayFormatPost, Locale.getDefault());
+				eventTime.setText(sdf1.format(startTime) + sdf2.format(endTime));
+			} else if(startTimeCal.get(Calendar.MONTH) == endTimeCal.get(Calendar.MONTH)) {		//Event starts and ends in different days
+				SimpleDateFormat sdf1 = new SimpleDateFormat(multiDayFormatPostPre, Locale.getDefault());
+				SimpleDateFormat sdf2 = new SimpleDateFormat(multiDayFormatPostPost, Locale.getDefault());
+				eventTime.setText(sdf1.format(startTime) + sdf2.format(endTime));
+			} else {		//Event starts and ends in different months
+				SimpleDateFormat sdf1 = new SimpleDateFormat(multiMonthFormatPostPre, Locale.getDefault());
+				SimpleDateFormat sdf2 = new SimpleDateFormat(multiMonthFormatPostPost, Locale.getDefault());
+				eventTime.setText(sdf1.format(startTime) + sdf2.format(endTime));
+			}
+			
 			
 			//Set description
 			TextView eventDesc = (TextView) itemView.findViewById(R.id.itemEventDescription);
-			eventDesc.setText(currentEvent.getDescription());
+			eventDesc.setText(currentEvent.getDesc());
 			
 			return itemView;
 		}
@@ -91,12 +146,6 @@ public class Planner extends Activity {
 	
 	
 	public void addEvent(View view) {
-//		Intent intent = new Intent(this, AddEvent.class);
-//		CalendarView calendarView = (CalendarView) findViewById(R.id.calendarView);
-//		long selectedDay = calendarView.getDate();
-//    	intent.putExtra(EXTRA_MESSAGE, selectedDay);
-//    	startActivity(intent);
-		
 		CalendarView calendarView = (CalendarView) findViewById(R.id.calendarView);
 		Intent intent = new Intent(Intent.ACTION_INSERT)
 		        .setData(Events.CONTENT_URI)
@@ -107,9 +156,15 @@ public class Planner extends Activity {
     }
 	
 	public void editEvents(View view) {
-//    	Intent intent = new Intent(this, DisplayMessageActivity.class);
-//    	startActivity(intent);
-
+		CalendarView calendarView = (CalendarView) findViewById(R.id.calendarView);
+		
+		Uri.Builder builder = CalendarContract.CONTENT_URI.buildUpon();
+		builder.appendPath("time");
+		ContentUris.appendId(builder, calendarView.getDate());
+		Intent intent = new Intent(Intent.ACTION_VIEW)
+		    .setData(builder.build());
+		startActivity(intent);
+		
     }
 	
 	
@@ -120,8 +175,10 @@ public class Planner extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View viewCLicked, int position, long id) {
 				Event clickedEvent = calendarItems.get(position);
-				String message = "AAAAAAAA " + clickedEvent.getName();
-				Toast.makeText(Planner.this, message, Toast.LENGTH_SHORT).show();
+				String a = String.valueOf(clickedEvent.getStartTime());
+				String b = String.valueOf(clickedEvent.getEndTime());
+				String message = a + " to " + b;
+				Toast.makeText(Planner.this, message, Toast.LENGTH_LONG).show();
 			}
 		});
 		

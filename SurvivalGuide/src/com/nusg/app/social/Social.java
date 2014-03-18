@@ -13,14 +13,32 @@ import android.widget.TextView;
 
 public class Social extends Activity {
 
+//	int lastSelectedButton = 1;
+//	String selectedButton = "selectedButton";
+	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.social_main);
-		WebView webView = (WebView) findViewById(R.id.webView);
-		webView.loadUrl("http://homepages.cs.ncl.ac.uk/2013-14/csc2022_team14/nightsOut.html");
+//		WebView webView = (WebView) findViewById(R.id.webView);
+//		
+//		if(savedInstanceState.getInt(selectedButton) == 0 | savedInstanceState.getInt(selectedButton) == 1) {
+//			clickedButton1(webView);
+//		} else if(savedInstanceState.getInt(selectedButton) == 2) {
+//			clickedButton2(webView);
+//		} else {
+//			clickedButton3(webView);
+//		}
+		
 		
 		
 	}
+	
+//	protected void onSaveInstanceState (Bundle savedInstanceState) {
+//		savedInstanceState.putInt(selectedButton, lastSelectedButton);
+//		
+//		
+//	}
+	
 	
 	public void clickedButton1(View view) {
 		//Setup the webView
@@ -42,6 +60,9 @@ public class Social extends Activity {
 		textView.setText(R.string.social_deals);
 		textView = (TextView) findViewById(R.id.button3);
 		textView.setText(R.string.social_predrink);
+		
+		//Save the last selected button for activity lifecycle
+//		lastSelectedButton = 1;
 	}
 	
 	public void clickedButton2(View view) {
@@ -64,6 +85,9 @@ public class Social extends Activity {
 		textView.setText(R.string.social_dealsU);
 		textView = (TextView) findViewById(R.id.button3);
 		textView.setText(R.string.social_predrink);
+		
+		//Save the last selected button for activity lifecycle
+//		lastSelectedButton = 2;
 	}
 	
 	public void clickedButton3(View view) {
@@ -86,6 +110,9 @@ public class Social extends Activity {
 		textView.setText(R.string.social_deals);
 		textView = (TextView) findViewById(R.id.button3);
 		textView.setText(R.string.social_predrinkU);
+		
+		//Save the last selected button for activity lifecycle
+//		lastSelectedButton = 3;
 	}
 	
 }

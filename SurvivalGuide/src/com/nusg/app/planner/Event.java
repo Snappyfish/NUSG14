@@ -2,31 +2,31 @@ package com.nusg.app.planner;
 
 public class Event {
 	private String name;
-	private int startTime;
-	private int endTime;
-	private String description;
+	private String desc;
+	private long startTime;
+	private long endTime;
 	
 	
-	public Event(String name, int startTime, int endTime, String description) {
+	public Event(String name, String desc, long startTime, long endTime) {
 		super();
 		this.name = name;
+		this.desc = desc;
 		this.startTime = startTime;
 		this.endTime = endTime;
-		this.description = description;
 	}
 	
 	
 	public String getName() {
 		return name;
 	}
-	public int getStartTime() {
+	public String getDesc() {
+		return desc;
+	}
+	public long getStartTime() {
 		return startTime;
 	}
-	public int getEndTime() {
+	public long getEndTime() {
 		return endTime;
-	}
-	public String getDescription() {
-		return description;
 	}
 	
 	
