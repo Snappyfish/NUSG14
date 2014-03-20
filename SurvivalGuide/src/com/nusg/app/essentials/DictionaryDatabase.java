@@ -16,7 +16,7 @@ public class DictionaryDatabase extends SQLiteOpenHelper
 {
 	private static final String TAG = "Database";
 	private static final String databaseName = "Dictionary";
-	private static final int databaseVersion = 2;
+	private static final int databaseVersion = 1;
 	private static final String tableName = "Dictionary";
 	private static final String id = "_id";
 	private static final String word = "Word";
