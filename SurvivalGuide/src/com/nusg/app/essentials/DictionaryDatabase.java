@@ -12,7 +12,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class Database extends SQLiteOpenHelper
+public class DictionaryDatabase extends SQLiteOpenHelper
 {
 	private static final String TAG = "Database";
 	private static final String databaseName = "Dictionary";
@@ -28,7 +28,7 @@ public class Database extends SQLiteOpenHelper
 	private static final String DROP_TABLE = "DROP TABLE IF EXISTS " + tableName;
 	private Context context;
 	
-	public Database(Context context)
+	public DictionaryDatabase(Context context)
 	{
 		super(context, databaseName, null, databaseVersion);
 		this.context = context;

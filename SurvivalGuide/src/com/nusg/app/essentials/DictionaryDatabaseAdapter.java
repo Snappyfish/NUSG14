@@ -5,7 +5,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
-public class DatabaseAdapter
+public class DictionaryDatabaseAdapter
 {
 	private static final String tableName = "Dictionary";
 	private static final String id = "_id";
@@ -13,18 +13,18 @@ public class DatabaseAdapter
 	public static final String definition = "Definition";
 	
 	private SQLiteDatabase db;
-	private Database database;
+	private DictionaryDatabase database;
 	private final Context context;
 	
-	public DatabaseAdapter(Context context)
+	public DictionaryDatabaseAdapter(Context context)
 	{
 		this.context = context;
 	}
 	
 //	opens the connection to SQLite Database and our own database
-	public DatabaseAdapter open() throws SQLException
+	public DictionaryDatabaseAdapter open() throws SQLException
 	{
-		database = new Database(context);
+		database = new DictionaryDatabase(context);
 		db = database.getWritableDatabase();
 		return this;
 	}

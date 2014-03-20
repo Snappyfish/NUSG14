@@ -15,7 +15,7 @@ import android.widget.SimpleCursorAdapter;
 public class GeordieDictionary extends Activity 
 {
  
-	private DatabaseAdapter database;
+	private DictionaryDatabaseAdapter database;
 	private SimpleCursorAdapter adapter;
 	 
 	@Override
@@ -24,7 +24,7 @@ public class GeordieDictionary extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.dictionary);
 		 
-		database = new DatabaseAdapter(this);
+		database = new DictionaryDatabaseAdapter(this);
 		database.open();
 		 
 		displayListView();
@@ -36,7 +36,7 @@ public class GeordieDictionary extends Activity
 		Cursor cursor = database.getAllWords();
 			 
 //		columns in the database to be put into each row 
-		String[] columns = new String[] {DatabaseAdapter.word, DatabaseAdapter.definition};
+		String[] columns = new String[] {DictionaryDatabaseAdapter.word, DictionaryDatabaseAdapter.definition};
 			 
 //		the defined views in XML that each text will go into 
 		int[] ids = new int[] {R.id.word, R.id.definition};
