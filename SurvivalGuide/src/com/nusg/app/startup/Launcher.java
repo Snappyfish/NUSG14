@@ -3,6 +3,7 @@ package com.nusg.app.startup;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -50,4 +51,10 @@ public class Launcher extends Activity{
 		};
 		timer.start();
 	}
+	
+	@Override
+	public void onConfigurationChanged(Configuration config) {
+	  super.onConfigurationChanged(config);
+	}
+	
 }

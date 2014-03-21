@@ -1,13 +1,14 @@
 package com.nusg.app.planner;
 
 public class Event {
+	private long id;
 	private String name;
 	private String desc;
 	private long startTime;
 	private long endTime;
 	
 	
-	public Event(String name, String desc, long startTime, long endTime) {
+	public Event(long id, String name, String desc, long startTime, long endTime) {
 		super();
 		this.name = name;
 		this.desc = desc;
@@ -15,7 +16,9 @@ public class Event {
 		this.endTime = endTime;
 	}
 	
-	
+	public long getId() {
+		return id;
+	}
 	public String getName() {
 		return name;
 	}

@@ -14,20 +14,21 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:padding="8dp" 
-        android:background="@drawable/back" >"
+        android:background="@drawable/back" >
 
     </ListView>
 
     <CalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
-        android:layout_height="230dp"
+        android:layout_height="400dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:layout_gravity="bottom"
         android:padding="8dp"
-        android:layout_above="@+id/addEventButton" />
+        android:layout_above="@+id/addEventButton"
+        android:dateTextAppearance="@style/TabletBiggerTextSize" />
 
     <Button
         android:id="@+id/addEventButton"

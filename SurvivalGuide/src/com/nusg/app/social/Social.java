@@ -7,62 +7,61 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
 public class Social extends Activity {
 
-//	int lastSelectedButton = 1;
-//	String selectedButton = "selectedButton";
+	int lastSelectedButton;
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.social_main);
-//		WebView webView = (WebView) findViewById(R.id.webView);
-//		
-//		if(savedInstanceState.getInt(selectedButton) == 0 | savedInstanceState.getInt(selectedButton) == 1) {
-//			clickedButton1(webView);
-//		} else if(savedInstanceState.getInt(selectedButton) == 2) {
-//			clickedButton2(webView);
-//		} else {
-//			clickedButton3(webView);
-//		}
 		
-		
+		View view = (View) findViewById(R.id.rootLayout);
+		clickedButton1(view);
+	}
+	
+	protected void onSaveInstanceState (Bundle savedInstanceState) {
+		super.onSaveInstanceState(savedInstanceState);
+		savedInstanceState.putInt("selectedButton", lastSelectedButton);
 		
 	}
 	
-//	protected void onSaveInstanceState (Bundle savedInstanceState) {
-//		savedInstanceState.putInt(selectedButton, lastSelectedButton);
-//		
-//		
-//	}
-	
+	@Override
+	public void onRestoreInstanceState(Bundle savedInstanceState) {
+		int lastSelected = savedInstanceState.getInt("selectedButton");
+		
+		View view = (View) findViewById(R.id.rootLayout);
+		if(lastSelected == 0 | lastSelected == 1) {
+			clickedButton1(view);
+		} else if(lastSelected == 2) {
+			clickedButton2(view);
+		} else {
+			clickedButton3(view);
+		}
+	}
 	
 	public void clickedButton1(View view) {
 		//Setup the webView
 		WebView webView = (WebView) findViewById(R.id.webView);
-		webView.loadUrl("http://homepages.cs.ncl.ac.uk/2013-14/csc2022_team14/nightsOut.html");
+		webView.loadUrl("file:///android_asset/nightsOut.html");
 		
-		//Set the background image on each button
-		LinearLayout buttoncont = (LinearLayout) findViewById(R.id.button1container);
-		buttoncont.setBackgroundResource(R.drawable.button_selected);
-		buttoncont = (LinearLayout) findViewById(R.id.button2container);
-		buttoncont.setBackgroundResource(R.drawable.button_unselected);
-		buttoncont = (LinearLayout) findViewById(R.id.button3container);
-		buttoncont.setBackgroundResource(R.drawable.button_unselected);
+		//Set the background image and underline on each button
+		TextView currentButton = (TextView) findViewById(R.id.button1);
+		currentButton.setBackgroundResource(R.drawable.button_selected);
+		currentButton.setText(R.string.social_nightsU);
 		
-		//Set the underline on selected button
-		TextView textView = (TextView) findViewById(R.id.button1);
-		textView.setText(R.string.social_nightsU);
-		textView = (TextView) findViewById(R.id.button2);
-		textView.setText(R.string.social_deals);
-		textView = (TextView) findViewById(R.id.button3);
-		textView.setText(R.string.social_predrink);
+		currentButton = (TextView) findViewById(R.id.button2);
+		currentButton.setText(R.string.social_deals);
+		currentButton.setBackgroundResource(R.drawable.button_unselected);
+		
+		currentButton = (TextView) findViewById(R.id.button3);
+		currentButton.setText(R.string.social_predrink);
+		currentButton.setBackgroundResource(R.drawable.button_unselected);
 		
 		//Save the last selected button for activity lifecycle
-//		lastSelectedButton = 1;
+		lastSelectedButton = 1;
 	}
 	
 	public void clickedButton2(View view) {
@@ -70,49 +69,44 @@ public class Social extends Activity {
 		WebView webView = (WebView) findViewById(R.id.webView);
 		webView.loadUrl("file:///android_asset/travel.html");
 		
-		//Set the background image on each button
-		LinearLayout buttoncont = (LinearLayout) findViewById(R.id.button1container);
-		buttoncont.setBackgroundResource(R.drawable.button_unselected);
-		LinearLayout button2cont = (LinearLayout) findViewById(R.id.button2container);
-		button2cont.setBackgroundResource(R.drawable.button_selected);
-		LinearLayout button3cont = (LinearLayout) findViewById(R.id.button3container);
-		button3cont.setBackgroundResource(R.drawable.button_unselected);
+		//Set the background image and underline on each button
+		TextView currentButton = (TextView) findViewById(R.id.button1);
+		currentButton.setBackgroundResource(R.drawable.button_unselected);
+		currentButton.setText(R.string.social_nights);
 		
-		//Set the underline on selected button
-		TextView textView = (TextView) findViewById(R.id.button1);
-		textView.setText(R.string.social_nights);
-		textView = (TextView) findViewById(R.id.button2);
-		textView.setText(R.string.social_dealsU);
-		textView = (TextView) findViewById(R.id.button3);
-		textView.setText(R.string.social_predrink);
+		currentButton = (TextView) findViewById(R.id.button2);
+		currentButton.setText(R.string.social_dealsU);
+		currentButton.setBackgroundResource(R.drawable.button_selected);
+		
+		currentButton = (TextView) findViewById(R.id.button3);
+		currentButton.setText(R.string.social_predrink);
+		currentButton.setBackgroundResource(R.drawable.button_unselected);
 		
 		//Save the last selected button for activity lifecycle
-//		lastSelectedButton = 2;
+		lastSelectedButton = 2;
 	}
 	
 	public void clickedButton3(View view) {
 		//Setup the webView
 		WebView webView = (WebView) findViewById(R.id.webView);
-		webView.loadUrl("http://homepages.cs.ncl.ac.uk/2013-14/csc2022_team14/clearing.html");
+		webView.loadUrl("file:///android_asset/clearing.html");
 		
-		//Set the background image on each button
-		LinearLayout buttoncont = (LinearLayout) findViewById(R.id.button1container);
-		buttoncont.setBackgroundResource(R.drawable.button_unselected);
-		buttoncont = (LinearLayout) findViewById(R.id.button2container);
-		buttoncont.setBackgroundResource(R.drawable.button_unselected);
-		buttoncont = (LinearLayout) findViewById(R.id.button3container);
-		buttoncont.setBackgroundResource(R.drawable.button_selected);
+		//Set the background image and underline on each button
+		TextView currentButton = (TextView) findViewById(R.id.button1);
+		currentButton.setBackgroundResource(R.drawable.button_unselected);
+		currentButton.setText(R.string.social_nights);
 		
-		//Set the underline on selected button
-		TextView textView = (TextView) findViewById(R.id.button1);
-		textView.setText(R.string.social_nights);
-		textView = (TextView) findViewById(R.id.button2);
-		textView.setText(R.string.social_deals);
-		textView = (TextView) findViewById(R.id.button3);
-		textView.setText(R.string.social_predrinkU);
+		currentButton = (TextView) findViewById(R.id.button2);
+		currentButton.setText(R.string.social_deals);
+		currentButton.setBackgroundResource(R.drawable.button_unselected);
+		
+		currentButton = (TextView) findViewById(R.id.button3);
+		currentButton.setText(R.string.social_predrinkU);
+		currentButton.setBackgroundResource(R.drawable.button_selected);
+		
 		
 		//Save the last selected button for activity lifecycle
-//		lastSelectedButton = 3;
+		lastSelectedButton = 3;
 	}
 	
 }

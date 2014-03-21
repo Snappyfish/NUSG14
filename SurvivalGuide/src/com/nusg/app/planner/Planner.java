@@ -13,6 +13,7 @@ import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -35,37 +36,53 @@ public class Planner extends Activity {
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(com.nusg.app.R.layout.planner_main);
+		
+		//If it's running on a tablet, use the tablet layout file instead
+		int screenSize = getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK;
+		if (screenSize > Configuration.SCREENLAYOUT_SIZE_NORMAL) {
+			setContentView(com.nusg.app.R.layout.planner_main_tablet);
+		} else {
+			setContentView(com.nusg.app.R.layout.planner_main);
+		}
 		
 		populateEventList();
 		populateListView();
 		registerClickCallback();
+		if (calendarItems.isEmpty()) {
+			TextView errorText = (TextView) findViewById(R.id.errorText);
+			errorText.setText("No events to display!");
+		}
 	}
 	
+	@Override
+	public void onConfigurationChanged(Configuration config) {
+	  super.onConfigurationChanged(config);
+	}
 
 	private void populateEventList() {
 		
 		ContentResolver contentResolver = this.getContentResolver();
 		long now = new Date().getTime();
 		
-        Cursor cursor = contentResolver.query(
+		try {
+        	Cursor cursor = contentResolver.query(
         		Uri.parse("content://com.android.calendar/events"), 		//Uri to the calendar events table
-        		(new String[] { "title", "description", "dtstart", "dtend"}), 	//The fields to copy over
+        		(new String[] { "_id", "title", "description", "dtstart", "dtend"}), 	//The fields to copy over
         		"( dtend > " + now + ")",			//SQL "Where" clause to select which rows to copy
         		null,		//sth
         		"dtstart ASC");			//order by
-        try {
+        
             if (cursor.getCount() > 0) {
                 while (cursor.moveToNext()) {
-                	Event newEvent = new Event(cursor.getString(0), cursor.getString(1), cursor.getLong(2), cursor.getLong(3));
+                	Event newEvent = new Event(cursor.getLong(0), cursor.getString(1), cursor.getString(2), cursor.getLong(3), cursor.getLong(4));
                 	
 					calendarItems.add(newEvent);
                 }
             }
-        } catch (AssertionError ex) {
-            ex.printStackTrace();
+		} catch (NullPointerException npe) {
+			Toast.makeText(Planner.this, "Error: Can't find calendar!", Toast.LENGTH_LONG).show();
         } catch (Exception e) {
-            e.printStackTrace();
+        	Toast.makeText(Planner.this, "Error: Something broke! :(", Toast.LENGTH_LONG).show();
         }
     }
 	
@@ -175,10 +192,10 @@ public class Planner extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View viewCLicked, int position, long id) {
 				Event clickedEvent = calendarItems.get(position);
-				String a = String.valueOf(clickedEvent.getStartTime());
-				String b = String.valueOf(clickedEvent.getEndTime());
-				String message = a + " to " + b;
-				Toast.makeText(Planner.this, message, Toast.LENGTH_LONG).show();
+				Uri uri = ContentUris.withAppendedId(Events.CONTENT_URI, clickedEvent.getId());
+				Intent intent = new Intent(Intent.ACTION_VIEW)
+				   .setData(uri);
+				startActivity(intent);
 			}
 		});
 		

@@ -22,24 +22,17 @@
             android:orientation="horizontal" 
             android:baselineAligned="false">
 
-            <LinearLayout
-                android:id="@+id/button1container"
+            <TextView
+                android:id="@+id/button1"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:background="@drawable/button_selected"
+                android:background="@drawable/button_unselected"
                 android:gravity="center"
                 android:orientation="vertical" 
-                android:baselineAligned="false">
-
-                <TextView
-                    android:id="@+id/button1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:singleLine="true"
-                    android:text="@string/social_nightsU"
-                    android:textColor="@color/colours"
-                    android:textSize="14sp" />
-            </LinearLayout>
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/colours"
+                android:textSize="14sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -52,24 +45,17 @@
             android:orientation="horizontal" 
             android:baselineAligned="false">
 
-            <LinearLayout
-                android:id="@+id/button2container"
+            <TextView
+                android:id="@+id/button2"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:background="@drawable/button_unselected"
                 android:gravity="center"
                 android:orientation="vertical" 
-                android:baselineAligned="false">
-
-                <TextView
-                    android:id="@+id/button2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:singleLine="true"
-                    android:text="@string/social_deals"
-                    android:textColor="@color/colours"
-                    android:textSize="14sp" />
-            </LinearLayout>
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/colours"
+                android:textSize="14sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -82,24 +68,17 @@
             android:orientation="horizontal" 
             android:baselineAligned="false">
 
-            <LinearLayout
-                android:id="@+id/button3container"
+            <TextView
+                android:id="@+id/button3"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:background="@drawable/button_unselected"
                 android:gravity="center"
                 android:orientation="vertical" 
-                android:baselineAligned="false">
-
-                <TextView
-                    android:id="@+id/button3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:singleLine="true"
-                    android:text="@string/social_predrink"
-                    android:textColor="@color/colours"
-                    android:textSize="14sp" />
-            </LinearLayout>
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/colours"
+                android:textSize="14sp" />
         </LinearLayout>
     </LinearLayout>
 

@@ -7,6 +7,7 @@ import com.nusg.app.R.layout;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.view.View;
 import android.widget.Button;
 
@@ -14,7 +15,14 @@ public class MainMenu extends Activity {
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main);
+		
+		//If it's running on a tablet, use the tablet layout file instead
+		int screenSize = getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK;
+		if (screenSize > Configuration.SCREENLAYOUT_SIZE_NORMAL) {
+			setContentView(com.nusg.app.R.layout.main_tablet);
+		} else {
+			setContentView(com.nusg.app.R.layout.main);
+		}
 		
 	}
 	
